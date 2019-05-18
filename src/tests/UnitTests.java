@@ -11,6 +11,5 @@ import static org.junit.Assert.*;
 public class UnitTests {
     @Test
     public void createBankTest() {
-
     }
 }
