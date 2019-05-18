@@ -18,7 +18,6 @@ public class BaseTasks {
     }
 
     BaseTasks(final String nameOfFile) {
-        tasks = new LinkedList<>();
         Scanner scanner;
         try {
             scanner = new Scanner(new File(nameOfFile));
@@ -30,6 +29,9 @@ public class BaseTasks {
             tasks = toObject(builder.toString());
         } catch (FileNotFoundException e) {
             System.out.println("Can't find a file!");
+        }
+        if (tasks == null) {
+            tasks = new LinkedList<>();
         }
     }
 
