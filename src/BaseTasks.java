@@ -18,17 +18,16 @@ public class BaseTasks {
     }
 
     BaseTasks(final String nameOfFile) {
-        Scanner scanner;
-        try {
-            scanner = new Scanner(new File(nameOfFile));
+        try (Scanner scanner = new Scanner(new File(nameOfFile))) {
             StringBuilder builder = new StringBuilder();
             while (scanner.hasNextLine()) {
                 builder.append(scanner.nextLine());
             }
-            scanner.close();
             tasks = toObject(builder.toString());
         } catch (FileNotFoundException e) {
             System.out.println("Can't find a file!");
+        } catch (NullPointerException e) {
+            System.out.println("The path is null!");
         }
         if (tasks == null) {
             tasks = new LinkedList<>();
